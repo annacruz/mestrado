@@ -3,12 +3,13 @@
 import sys
 from collections import Counter
 from math import sqrt
+import matplotlib.pyplot as plot
 
 arquivo = open(sys.argv[1],'r')
 tmp = arquivo.readlines()
 numbers = []
 for element in tmp:
-    numbers.append(int(element.strip()))
+    numbers.append(float(element.strip()))
 total_elements = len(numbers)
 position = total_elements/2
 median = (numbers[position] + numbers[position+1])/2
@@ -17,6 +18,7 @@ numbers.sort()
 frequency = Counter(numbers).most_common()
 mode = frequency[0][0]
 frequency.sort()
+
 
 relative_frequency = []
 for x in frequency:
@@ -47,3 +49,15 @@ for l in second_moment:
 
 variance = round(total_second_moment - (total_average**2),3)
 deviation = round(sqrt(variance),3)
+
+#plotting graph
+x = []
+y = []
+for elements in frequency:
+    x.append(int(elements[0]))
+    y.append(elements[1])
+
+
+plot.plot(x, y, 'bo')
+plot.plot(x, y, 'r--')
+plot.show()
