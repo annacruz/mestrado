@@ -12,13 +12,12 @@ for element in tmp:
     numbers.append(float(element.strip()))
 total_elements = len(numbers)
 position = total_elements/2
+numbers.sort()
 median = (numbers[position] + numbers[position+1])/2
 
-numbers.sort()
 frequency = Counter(numbers).most_common()
 mode = frequency[0][0]
 frequency.sort()
-
 
 relative_frequency = []
 for x in frequency:
@@ -57,7 +56,7 @@ for elements in frequency:
     x.append(int(elements[0]))
     y.append(elements[1])
 
-
 plot.plot(x, y, 'bo')
 plot.plot(x, y, 'r--')
 plot.show()
+plot.savefig('figura.png')
