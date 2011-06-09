@@ -39,9 +39,8 @@ def sscmax2(A,n):
     k = n
     vSeq = [0] * 8    
     while k >= 0:
-        if c[k] == vMax:
-            if vSeq[k] == 0:
-                vSeq[k] = A[k]
+        if (c[k] == vMax) and (vSeq[k] == 0):
+            vSeq[k] = A[k]
             vMax -= 1
         k -= 1
     print vSeq
